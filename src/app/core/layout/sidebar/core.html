@@ -1,0 +1,11 @@
+<!-- sidebar.component.html -->
+<nav [ngClass]="{ 'hidden': !isOpen, 'block': isOpen }">
+
+  <ul class="space-y-2">
+    <li><a routerLink="/features" class="hover:bg-gray-800 p-2 rounded block">🔧 Features</a></li>
+    <li><a routerLink="/sobre" class="hover:bg-gray-800 p-2 rounded block">📖 Sobre</a></li>
+    <li><a routerLink="/planos" class="hover:bg-gray-800 p-2 rounded block">💰 Planos</a></li>
+  </ul>
+
+</nav>
+
