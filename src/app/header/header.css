@@ -1,0 +1,34 @@
+header {
+  width: 100%;
+  height: 60px; /* ou o que quiser */
+  background-color: transparent;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  margin: 0; /* garantir que não tenha margem empurrando */
+  box-sizing: border-box; /* pra padding não estourar a largura */
+}
+
+.box-campos-de-info-do-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 20px; /* Adiciona 20px de espaço entre os elementos */
+}
+.imagem-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 40px; /* Define altura máxima menor que o header */
+  width: auto; /* Mantém a proporção da imagem */
+  margin: auto 0; /* Centraliza verticalmente */
+}
+
+.imagem-logo img {
+  width: 150px;
+  height: auto;
+  display: block;
+}
