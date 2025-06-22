@@ -1,9 +1,109 @@
-main {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+/* Removendo o posicionamento absolute e ajustando o layout */
+main.home-container {
+  position: relative;
+  width: 100%;
+  margin-top: 80px; /* Adicione um espaço para o header - ajuste este valor de acordo com a altura do seu header */
+  display: flex;
+  flex-direction: column;
 }
-.box-main-info-text {
-  color: white;
+
+.home-section {
+  min-height: calc(100vh - 80px); /* Subtrai a altura do header */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box-main-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 20px; /* Adiciona um padding lateral */
+}
+
+.box-main-info img {
+  width: 400px;
+  height: auto;
+  max-width: 100%; /* Garante que a imagem não ultrapasse o container */
+}
+
+.features-section {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.features-section {
+  padding: 40px 20px;
+}
+
+.box-features {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+/* Estilo base para todos os boxes */
+.box-bate-papo,
+.box-sugerir-analises,
+.box-conversar-em-c {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Linha vertical */
+.vertical-line {
+  width: 3px;
+  background-color: #ccc;
+  align-self: stretch;
+}
+
+/* Container para conteúdo principal */
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Container para título e imagem */
+.title-with-image {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Alinhamento alternado */
+.box-bate-papo {
+  margin-left: auto;
+}
+
+.box-sugerir-analises {
+  margin-right: auto;
+}
+
+.box-conversar-em-c {
+  margin-left: auto;
+}
+
+/* Estilo para as imagens */
+.box-features img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+}
+
+/* Estilo para os títulos */
+.box-features h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+/* Estilo para os parágrafos */
+.box-features p {
+  margin: 0;
+  max-width: 300px;
 }
