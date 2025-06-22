@@ -1,14 +1,32 @@
+
 header {
+  position: relative;
   width: 100%;
-  height: 60px; /* ou o que quiser */
+  height: 60px;
   background-color: transparent;
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  margin: 0; /* garantir que não tenha margem empurrando */
-  box-sizing: border-box; /* pra padding não estourar a largura */
+  margin: 0;
+  box-sizing: border-box;
+}
+
+header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px; /* Reduzindo para 1px para ficar mais fina */
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(128, 128, 128, 0.3), /* Mudando para tom de cinza */
+    transparent
+  );
+  pointer-events: none;
 }
 
 .box-campos-de-info-do-header {
@@ -18,17 +36,12 @@ header {
   width: 100%;
   gap: 20px; /* Adiciona 20px de espaço entre os elementos */
 }
-.imagem-logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-height: 40px; /* Define altura máxima menor que o header */
-  width: auto; /* Mantém a proporção da imagem */
-  margin: auto 0; /* Centraliza verticalmente */
-}
+
 
 .imagem-logo img {
-  width: 150px;
+  width: 100px;
   height: auto;
   display: block;
+  object-fit: contain; /* Garante que a imagem se ajuste ao container */
+  max-height: 100%; /* Limita a altura máxima ao tamanho do container */
 }
