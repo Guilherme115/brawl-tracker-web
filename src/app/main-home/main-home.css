@@ -15,11 +15,45 @@ main.home-container {
   justify-content: center;
 }
 
+.box-main-info-text {
+  font-weight: normal;
+}
+.box-main-info-text {
+  font-weight: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza horizontalmente */
+  text-align: center; /* Centraliza o texto */
+}
+
+.button-start {
+  background-color: #5865F2;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 28px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 10px; /* Adiciona um espaçamento acima do botão */
+}
+
+.button-start:hover {
+  background-color: #4752C4;
+}
+
+.button-start:active {
+  background-color: #3C45A5;
+}
+
+
 .box-main-info {
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 0 20px; /* Adiciona um padding lateral */
+  padding: 0 20px;
+  font-weight: 300/* Adiciona um padding lateral */
 }
 
 .box-main-info img {
@@ -28,14 +62,6 @@ main.home-container {
   max-width: 100%; /* Garante que a imagem não ultrapasse o container */
 }
 
-.features-section {
-  min-height: 100vh;
-  width: 100%;
-}
-
-.features-section {
-  padding: 40px 20px;
-}
 
 .box-features {
   max-width: 1200px;
@@ -70,40 +96,16 @@ main.home-container {
 }
 
 /* Container para título e imagem */
-.title-with-image {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
 
-/* Alinhamento alternado */
-.box-bate-papo {
-  margin-left: auto;
-}
 
-.box-sugerir-analises {
-  margin-right: auto;
-}
 
-.box-conversar-em-c {
-  margin-left: auto;
-}
+
+
 
 /* Estilo para as imagens */
-.box-features img {
-  width: 30px;
-  height: 30px;
-  object-fit: cover;
-}
+
 
 /* Estilo para os títulos */
-.box-features h1 {
-  font-size: 24px;
-  margin: 0;
-}
+
 
 /* Estilo para os parágrafos */
-.box-features p {
-  margin: 0;
-  max-width: 300px;
-}
