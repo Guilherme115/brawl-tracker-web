@@ -1,4 +1,3 @@
-
 header {
   position: relative;
   width: 100%;
@@ -11,6 +10,8 @@ header {
   padding: 0 20px;
   margin: 0;
   box-sizing: border-box;
+  /* Adicionando uma transição suave ao fazer scroll */
+  transition: all 0.3s ease-in-out;
 }
 
 header::after {
@@ -19,14 +20,16 @@ header::after {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 1px; /* Reduzindo para 1px para ficar mais fina */
+  height: 1px;
   background: linear-gradient(
     to right,
     transparent,
-    rgba(128, 128, 128, 0.3), /* Mudando para tom de cinza */
+    rgba(128, 128, 128, 0.3),
     transparent
   );
   pointer-events: none;
+  /* Adicionando animação na linha */
+  animation: glowLine 2s infinite alternate;
 }
 
 .box-campos-de-info-do-header {
@@ -34,19 +37,53 @@ header::after {
   justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 20px; /* Adiciona 20px de espaço entre os elementos */
+  gap: 20px;
 }
 
+.box-campos-de-info-do-header a {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+  transition: all 0.3s ease;
+}
+
+/* Efeito hover nos links */
+.box-campos-de-info-do-header a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: #5865F2;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.box-campos-de-info-do-header a:hover::after {
+  width: 100%;
+}
+
+.box-campos-de-info-do-header a:hover {
+  transform: translateY(-2px);
+}
 
 .imagem-logo img {
   width: 100px;
   height: auto;
   display: block;
-  object-fit: contain; /* Garante que a imagem se ajuste ao container */
-  max-height: 100%; /* Limita a altura máxima ao tamanho do container */
+  object-fit: contain;
+  max-height: 100%;
+  transition: transform 0.3s ease;
 }
+
+.imagem-logo img:hover {
+  transform: scale(1.05);
+}
+
 .button-login {
-  background-color: #5865F2; /* Cor oficial do Discord */
+  background-color: #5865F2;
   color: white;
   border: none;
   border-radius: 40px;
@@ -54,14 +91,59 @@ header::after {
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .button-login:hover {
-  background-color: #4752C4; /* Cor mais escura para o hover */
+  background-color: #4752C4;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(88, 101, 242, 0.3);
 }
 
 .button-login:active {
-  background-color: #3C45A5; /* Cor ainda mais escura para quando pressionado */
+  background-color: #3C45A5;
+  transform: translateY(0);
+}
+
+/* Keyframes para animações */
+@keyframes glowLine {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animação para entrada dos elementos quando a página carrega */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Aplicando animação de entrada */
+header > * {
+  animation: fadeInDown 0.6s ease-out forwards;
+}
+
+/* Delay escalonado para cada elemento */
+.imagem-logo {
+  animation-delay: 0.2s;
+}
+
+.box-campos-de-info-do-header {
+  animation-delay: 0.4s;
+}
+
+app-user-profile {
+  animation-delay: 0.6s;
 }
 

@@ -1,20 +1,15 @@
 <header>
-
-  <div class = "imagem-logo">
-    <img src="assets/imgs/Brawl-Tracker-Logo.png" alt="Logo">
-  </div >
-
-  <div class = "box-campos-de-info-do-header">
-  <p>premium </p>
-  <p>features</p>
-  <p>about</p>
-  <p>features</p>
-  <p>contact us</p>
+  <div class="imagem-logo" [@logoAnimation]>
+    <a routerLink="/">
+      <img src="assets/imgs/Brawl-Tracker-Logo.png" alt="Logo">
+    </a>
   </div>
 
-  <div class = "box-login"></div>
-  <button class = "button-login">Login</button>
+  <div class="box-campos-de-info-do-header" [@linksAnimation]>
+    <a routerLink="/plans" [@linkHover]>premium</a>
+    <a routerLink="/commands" [@linkHover]>commands</a>
+    <a routerLink="/contact" [@linkHover]>contact us</a>
+  </div>
 
-
-
+  <app-user-profile [@profileAnimation]></app-user-profile>
 </header>
