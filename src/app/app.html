@@ -1,5 +1,9 @@
-<app-header></app-header>
-<app-main-home></app-main-home>
-<app-footer></app-footer>
-
-<router-outlet></router-outlet>
+<div class="app-container">
+  <app-header></app-header>
+  <main class="main-content">
+    <div class="route-container" [@routeAnimations]="prepareRoute(outlet)">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+  </main>
+  <app-footer></app-footer>
+</div>

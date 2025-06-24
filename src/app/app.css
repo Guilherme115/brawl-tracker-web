@@ -1,0 +1,141 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  perspective: 1000px; /* Adiciona perspectiva para o efeito Home */
+}
+
+.main-content {
+  flex: 1 0 auto;
+  position: relative;
+  background-color: #fff;
+  min-height: 50vh;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.route-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  contain: layout style paint;
+  transform-style: preserve-3d;
+}
+
+.route-container > * {
+  width: 100%;
+  display: block;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Efeito especial para animação do Home */
+.route-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center,
+  rgba(74, 144, 226, 0.1) 0%,
+  rgba(74, 144, 226, 0.05) 40%,
+  transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  transform: scale(0.5);
+}
+
+/* Animação especial quando vai para Home */
+.route-container.home-entering::before {
+  opacity: 1;
+  animation: home-welcome 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes home-welcome {
+  0% {
+    transform: scale(0.3) rotate(-10deg);
+    opacity: 0;
+  }
+  30% {
+    transform: scale(1.2) rotate(5deg);
+    opacity: 0.8;
+  }
+  60% {
+    transform: scale(0.9) rotate(-2deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+/* Efeito de "pulso" sutil para destacar que chegou em casa */
+.route-container::after {
+  content: '🏠';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  font-size: 3rem;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.route-container.home-entering::after {
+  animation: home-icon-pulse 0.6s 0.2s ease-out;
+}
+
+@keyframes home-icon-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5) rotate(0deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+/* Efeito de brilho rápido para outras transições */
+.route-container.quick-transition::before {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  animation: quick-flash 0.3s ease-out;
+}
+
+@keyframes quick-flash {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Força aceleração de hardware */
+.route-container,
+.route-container > * {
+  transform: translateZ(0);
+}
+
+/* Remove qualquer delay em touch devices */
+* {
+  touch-action: manipulation;
+}
