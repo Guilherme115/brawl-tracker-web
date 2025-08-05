@@ -1,12 +1,15 @@
 import { Routes } from '@angular/router';
 
+// Seus componentes de PÁGINA
 import { MainHome } from './main-home/main-home';
-import { Header } from './header/header';
-import { Footer } from './footer/footer';
 import { PlansPrice } from './plans-price/plans-price';
 import { Commands } from './commands/commands';
 import { ContactUs } from './contact-us/contact-us';
 import { Loginsucess } from './loginsucess/loginsucess';
+import { AnalysisPage } from './analysis-page/analysis-page';
+
+// Importe o novo guarda
+import { authGuard } from './core/auth.guard';
 
 export const routes: Routes = [
   {
@@ -15,23 +18,20 @@ export const routes: Routes = [
     data: { animation: 'HomePage' }
   },
   {
-    path: 'header',
-    component: Header,
-    data: { animation: 'HeaderPage' }
-  },
-  {
     path: 'login-success',
     component: Loginsucess,
     data: { animation: 'LoginPage' }
   },
   {
-    path: 'footer',
-    component: Footer,
-    data: { animation: 'FooterPage' }
-  },
-  {
     path: 'plans',
     component: PlansPrice,
+    data: { animation: 'PlansPage' }
+  },
+  {
+    path: 'analysis',
+    component: AnalysisPage,
+    // APLIQUE O GUARDA AQUI
+    canActivate: [authGuard],
     data: { animation: 'PlansPage' }
   },
   {
@@ -43,5 +43,10 @@ export const routes: Routes = [
     path: 'contact',
     component: ContactUs,
     data: { animation: 'ContactPage' }
+  },
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full'
   }
 ];
