@@ -1,19 +1,265 @@
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-weight: normal;
-  font-family: 'Lexend', sans-serif;
-  padding: 0;
-  height: 100%;
-  background: #14151e linear-gradient(
-    to top,
-    #14151e 60%,
-    rgba(20, 21, 30, 0.98) 75%,
-    rgba(20, 21, 30, 0.95) 85%,
-    rgba(255, 255, 255, 0.05) 100%
-  );
+/* Importa as fontes que você está usando no projeto */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Lexend:wght@300;400&display=swap');
+
+/* --- TEMA GLOBAL E VARIÁVEIS --- */
+/* :root é o lugar para criar variáveis que funcionarão em todo o site. */
+:root {
+  /* Cores */
+  --primary-color: #5865F2;
+  --background-dark: #0f111a;
+  --text-primary: #ffffff;
+  --background-medium: #1c1f2e;
+  --text-secondary: #a9aeb8;
+  --border-color: rgba(128, 128, 128, 0.2);
+  --accent: #4D6FFF;
+
+  /* Fontes */
+  --font-display: 'Orbitron', sans-serif;
+  --font-body: 'Lexend', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6, p{
+/* --- ESTILOS GLOBAIS DE BASE --- */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
   font-weight: 300;
+  background: #14151e;
+  color: var(--text-secondary);
 }
+
+/* Um reset simples para títulos e parágrafos */
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Define que títulos usarão a fonte de display e a cor primária de texto */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+}
+
+/* --- BACKGROUNDS ANIMADOS REUTILIZÁVEIS --- */
+
+/* Background padrão para todas as seções */
+.animated-bg {
+  position: relative;
+  background-color: var(--background-dark);
+  background-image:
+    radial-gradient(ellipse at center, rgba(77, 111, 255, 0.08) 0%, transparent 70%),
+    radial-gradient(circle at 20% 80%, rgba(77, 111, 255, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(77, 111, 255, 0.04) 0%, transparent 50%);
+  overflow: hidden;
+}
+
+/* Elementos decorativos minimalistas - Variação 1 (Principal) */
+.animated-bg-primary::before {
+  content: '';
+  position: absolute;
+  top: 15%;
+  right: 8%;
+  width: 120px;
+  height: 120px;
+  border: 1px solid rgba(77, 111, 255, 0.12);
+  border-radius: 50%;
+  animation: floatSlow 12s ease-in-out infinite;
+  z-index: 0;
+}
+
+.animated-bg-primary::after {
+  content: '';
+  position: absolute;
+  bottom: 20%;
+  left: 5%;
+  width: 80px;
+  height: 80px;
+  border: 1px solid rgba(77, 111, 255, 0.1);
+  border-radius: 12px;
+  animation: floatSlow 15s ease-in-out infinite reverse;
+  z-index: 0;
+}
+
+/* Elementos decorativos - Variação 2 (Secundária) */
+.animated-bg-secondary::before {
+  content: '';
+  position: absolute;
+  top: 25%;
+  left: 10%;
+  width: 100px;
+  height: 100px;
+  border: 1px solid rgba(77, 111, 255, 0.1);
+  border-radius: 20px;
+  animation: rotateElement 20s linear infinite;
+  z-index: 0;
+}
+
+.animated-bg-secondary::after {
+  content: '';
+  position: absolute;
+  bottom: 30%;
+  right: 12%;
+  width: 60px;
+  height: 60px;
+  border: 1px solid rgba(77, 111, 255, 0.08);
+  border-radius: 50%;
+  animation: pulse 8s ease-in-out infinite;
+  z-index: 0;
+}
+
+/* Elementos decorativos - Variação 3 (Terciária) */
+.animated-bg-tertiary::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  width: 2px;
+  height: 150px;
+  background: linear-gradient(180deg, transparent, rgba(77, 111, 255, 0.15), transparent);
+  animation: slideVertical 10s ease-in-out infinite;
+  z-index: 0;
+}
+
+.animated-bg-tertiary::after {
+  content: '';
+  position: absolute;
+  bottom: 15%;
+  right: 10%;
+  width: 2px;
+  height: 120px;
+  background: linear-gradient(180deg, transparent, rgba(77, 111, 255, 0.12), transparent);
+  animation: slideVertical 14s ease-in-out infinite reverse;
+  z-index: 0;
+}
+
+/* Pontos decorativos espalhados */
+.animated-bg-dots::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(77, 111, 255, 0.1) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(77, 111, 255, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at 90% 15%, rgba(77, 111, 255, 0.06) 1px, transparent 1px);
+  background-size: 800px 600px, 600px 800px, 400px 500px;
+  animation: movePattern 30s ease-in-out infinite;
+  z-index: 0;
+}
+
+/* Garante que o conteúdo fique acima das animações */
+.animated-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- ANIMAÇÕES GLOBAIS --- */
+@keyframes floatSlow {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-15px) rotate(180deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(0) rotate(360deg);
+    opacity: 0.3;
+  }
+}
+
+@keyframes rotateElement {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes slideVertical {
+  0%, 100% {
+    opacity: 0.2;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes movePattern {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(10px, -15px);
+  }
+  66% {
+    transform: translate(-5px, 10px);
+  }
+}
+
+/* --- CLASSES DE UTILIDADE --- */
+
+/* Para seções que precisam de altura mínima */
+.min-vh-100 {
+  min-height: 100vh;
+}
+
+/* Para centralizar conteúdo */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Padding padrão para seções */
+.section-padding {
+  padding: 4rem 2rem;
+}
+
+/* --- RESPONSIVIDADE GLOBAL --- */
+@media (max-width: 768px) {
+  /* Remove elementos decorativos em mobile para melhor performance */
+  .animated-bg-primary::before,
+  .animated-bg-primary::after,
+  .animated-bg-secondary::before,
+  .animated-bg-secondary::after,
+  .animated-bg-tertiary::before,
+  .animated-bg-tertiary::after,
+  .animated-bg-dots::before {
+    display: none;
+  }
+
+  /* Reduz padding em mobile */
+  .section-padding {
+    padding: 2rem 1rem;
+  }
+}
+
+/* --- MODO REDUZIDO DE MOVIMENTO (ACESSIBILIDADE) --- */
+@media (prefers-reduced-motion: reduce) {
+  .animated-bg-primary::before,
+  .animated-bg-primary::after,
+  .animated-bg-secondary::before,
+  .animated-bg-secondary::after,
+  .animated-bg-tertiary::before,
+  .animated-bg-tertiary::after,
+  .animated-bg-dots::before {
+    animation: none;
+  }
+}
+body.no-scroll {
+  overflow: hidden;
+}
+
