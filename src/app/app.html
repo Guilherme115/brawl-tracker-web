@@ -1,9 +1,14 @@
 <div class="app-container">
   <app-header></app-header>
-  <main class="main-content">
-    <div class="route-container" [@routeAnimations]="prepareRoute(outlet)">
-      <router-outlet #outlet="outlet"></router-outlet>
-    </div>
+
+  <main #routeContainer
+        class="route-container"
+        [@routeAnimations]="prepareRoute(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
   </main>
+
   <app-footer></app-footer>
 </div>
+
+<!-- O popup será renderizado aqui quando o serviço avisar -->
+<app-login-popup *ngIf="showLoginPopup$ | async"></app-login-popup>
