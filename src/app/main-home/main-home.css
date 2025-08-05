@@ -1,111 +1,306 @@
-/* Removendo o posicionamento absolute e ajustando o layout */
-main.home-container {
-  position: relative;
-  width: 100%;
-  margin-top: 80px; /* Adicione um espaço para o header - ajuste este valor de acordo com a altura do seu header */
-  display: flex;
-  flex-direction: column;
+/* Use as variáveis que já definimos em outros arquivos para manter a consistência */
+:root {
+  --bg-primary: #0f111a;
+  --accent: #4D6FFF;
+  --text-primary: #FFFFFF;
+  --text-secondary: #a9aeb8;
 }
 
+/* Fundo da seção principal */
 .home-section {
-  min-height: calc(100vh - 80px); /* Subtrai a altura do header */
   width: 100%;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 2rem;
+  background-color: var(--bg-primary);
+  background-image:
+    radial-gradient(ellipse at center, rgba(77, 111, 255, 0.1) 0%, transparent 70%),
+    radial-gradient(circle at 20% 80%, rgba(77, 111, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(77, 111, 255, 0.05) 0%, transparent 50%);
+  position: relative;
+  overflow: hidden;
 }
 
-.box-main-info-text {
-  font-weight: normal;
-}
-.box-main-info-text {
-  font-weight: normal;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centraliza horizontalmente */
-  text-align: center; /* Centraliza o texto */
-}
-
-.button-start {
-  background-color: #5865F2;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 28px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  margin-top: 10px; /* Adiciona um espaçamento acima do botão */
+/* Elementos decorativos minimalistas distribuídos */
+.home-section::before {
+  content: '';
+  position: absolute;
+  top: 15%;
+  right: 8%;
+  width: 120px;
+  height: 120px;
+  border: 1px solid rgba(77, 111, 255, 0.15);
+  border-radius: 50%;
+  animation: floatSlow 8s ease-in-out infinite;
 }
 
-.button-start:hover {
-  background-color: #4752C4;
+.home-section::after {
+  content: '';
+  position: absolute;
+  bottom: 20%;
+  left: 5%;
+  width: 80px;
+  height: 80px;
+  border: 1px solid rgba(77, 111, 255, 0.12);
+  border-radius: 12px;
+  animation: floatSlow 10s ease-in-out infinite reverse;
 }
 
-.button-start:active {
-  background-color: #3C45A5;
+/* Pontos decorativos minimalistas */
+.home-section {
+  /* Pontos pequenos espalhados */
+}
+
+.home-section::before {
+  box-shadow:
+    300px 100px 0 -50px rgba(77, 111, 255, 0.1),
+    -200px -80px 0 -60px rgba(77, 111, 255, 0.08),
+    400px -150px 0 -55px rgba(77, 111, 255, 0.06);
+}
+
+/* Container principal com grid invisível */
+.home-conatiner {
+  position: relative;
+  width: 100%;
+}
+
+/* Elementos de fundo sutis nas laterais */
+.home-conatiner::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 2px;
+  height: 200px;
+  background: linear-gradient(180deg, transparent, rgba(77, 111, 255, 0.2), transparent);
+  animation: slideVertical 6s ease-in-out infinite;
+}
+
+.home-conatiner::after {
+  content: '';
+  position: absolute;
+  top: 60%;
+  right: 0;
+  width: 2px;
+  height: 150px;
+  background: linear-gradient(180deg, transparent, rgba(77, 111, 255, 0.15), transparent);
+  animation: slideVertical 8s ease-in-out infinite reverse;
+}
+.carousel-image {
+  width: 300px;
+  height: auto;
+  transition: opacity 0.5s ease-in-out;
 }
 
 
 .box-main-info {
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 0 20px;
-  font-weight: 300/* Adiciona um padding lateral */
-}
-
-.box-main-info img {
-  width: 400px;
-  height: auto;
-  max-width: 100%; /* Garante que a imagem não ultrapasse o container */
-}
-
-
-.box-features {
+  justify-content: center;
+  gap: 4rem;
   max-width: 1200px;
-  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Melhoria na área da imagem com elementos ao redor */
+.imagem-logo {
+  position: relative;
+}
+
+/* Círculos minimalistas ao redor da logo */
+.imagem-logo::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(77, 111, 255, 0.2);
+  border-radius: 50%;
+  animation: orbit 15s linear infinite;
+}
+
+.imagem-logo::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  right: -40px;
+  width: 12px;
+  height: 12px;
+  background: rgba(77, 111, 255, 0.15);
+  border-radius: 50%;
+  animation: orbit 20s linear infinite reverse;
+}
+
+.imagem-logo img {
+  width: 450px;
+  max-width: 100%;
+  filter: drop-shadow(0 0 35px rgba(77, 111, 255, 0.2));
+  animation: floatAnimation 6s ease-in-out infinite;
+  position: relative;
+  z-index: 2;
+}
+
+/* Área de texto com mais elementos sutis */
+.box-main-info-text {
   display: flex;
   flex-direction: column;
-  gap: 80px;
+  align-items: flex-start;
+  text-align: left;
+  max-width: 500px;
+  position: relative;
 }
 
-/* Estilo base para todos os boxes */
-.box-bate-papo,
-.box-sugerir-analises,
-.box-conversar-em-c {
+/* Pontos decorativos na área do texto */
+.box-main-info-text::before {
+  content: '•';
+  position: absolute;
+  top: -20px;
+  right: -60px;
+  color: rgba(77, 111, 255, 0.3);
+  font-size: 8px;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.box-main-info-text::after {
+  content: '•';
+  position: absolute;
+  bottom: -30px;
+  left: -40px;
+  color: rgba(77, 111, 255, 0.2);
+  font-size: 6px;
+  animation: twinkle 4s ease-in-out infinite reverse;
+}
+
+/* Linha decorativa */
+.box-main-info-text h1::before {
+  content: '';
+  position: absolute;
+  top: -25px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  border-radius: 2px;
+}
+
+.box-main-info-text h1 {
+  color: var(--text-primary);
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  margin: 0;
+  background: linear-gradient(90deg, #FFFFFF, #c0c8ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+
+.box-main-info-text p {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin: 1.5rem 0 2.5rem 0;
+  position: relative;
+}
+
+/* Botão com elementos decorativos ao redor */
+.button-start {
+  background: linear-gradient(135deg, var(--accent), #6B7EFF);
+  color: var(--text-primary);
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(77, 111, 255, 0.2);
   display: flex;
-  gap: 20px;
-  width: 100%;
-  max-width: 600px;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Linha vertical */
-.vertical-line {
-  width: 3px;
-  background-color: #ccc;
-  align-self: stretch;
+.button-start::before {
+  content: '→';
+  margin-left: 0.5rem;
+  transition: transform 0.3s ease;
 }
 
-/* Container para conteúdo principal */
-.content-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.button-start:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(77, 111, 255, 0.4);
+  filter: brightness(1.1);
 }
 
-/* Container para título e imagem */
+.button-start:hover::before {
+  transform: translateX(4px);
+}
 
+/* Animações sutis */
+@keyframes floatAnimation {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
 
+@keyframes floatSlow {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(180deg); }
+  100% { transform: translateY(0) rotate(360deg); }
+}
 
+@keyframes orbit {
+  0% { transform: rotate(0deg) translateX(60px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
+}
 
+@keyframes slideVertical {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 0.8; transform: translateY(-20px); }
+}
 
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.5); }
+}
 
-/* Estilo para as imagens */
+/* Responsividade */
+@media (max-width: 900px) {
+  .home-section::before,
+  .home-section::after,
+  .home-conatiner::before,
+  .home-conatiner::after,
+  .box-main-info-text::before,
+  .box-main-info-text::after,
+  .imagem-logo::before,
+  .imagem-logo::after {
+    display: none;
+  }
 
+  .box-main-info {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
 
-/* Estilo para os títulos */
+  .box-main-info-text {
+    align-items: center;
+    text-align: center;
+  }
 
+  .box-main-info-text h1 {
+    font-size: 2.8rem;
+  }
 
-/* Estilo para os parágrafos */
+  .imagem-logo img {
+    width: 300px;
+    margin-bottom: 1rem;
+  }
+}

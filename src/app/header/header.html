@@ -1,15 +1,41 @@
-<header>
-  <div class="imagem-logo" [@logoAnimation]>
-    <a routerLink="/">
-      <img src="assets/imgs/Brawl-Tracker-Logo.png" alt="Logo">
+<header [class.large]="isHomePage && !isScrolled" [class.hidden]="isHeaderHidden">
+  <div class="header-container">
+    <a routerLink="/" class="logo">
+      <img src="assets/imgs/Logo-Brawl-Tracker.png" alt="Brawl Tracker Logo">
     </a>
-  </div>
 
-  <div class="box-campos-de-info-do-header" [@linksAnimation]>
-    <a routerLink="/plans" [@linkHover]>premium</a>
-    <a routerLink="/commands" [@linkHover]>commands</a>
-    <a routerLink="/contact" [@linkHover]>contact us</a>
-  </div>
+    <button class="mobile-menu-button" [class.open]="isMobileMenuOpen" (click)="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-  <app-user-profile [@profileAnimation]></app-user-profile>
+    <nav [class.mobile-open]="isMobileMenuOpen">
+      <ul>
+        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMobileMenu()">{{ 'HEADER.HOME' | translate }}</a></li>
+        <li><a routerLink="/plans" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'HEADER.PLANS' | translate }}</a></li>
+        <li><a routerLink="/analysis" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'HEADER.ANALYSIS' | translate }}</a></li>
+        <li><a routerLink="/commands" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'HEADER.COMMANDS' | translate }}</a></li>
+        <li><a routerLink="/contact" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'HEADER.CONTACT' | translate }}</a></li>
+      </ul>
+    </nav>
+
+    <div class="actions">
+      <!-- Seletor de Idioma -->
+      <div class="language-selector" (click)="toggleLanguageDropdown($event)">
+        <!-- ÍCONE SVG SUBSTITUÍDO POR UMA VERSÃO MELHOR -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="globe-icon">
+          <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"></path>
+          <path d="M2 12h20"></path>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10"></path>
+          <path d="M12 2a15.3 15.3 0 0 0-4 10 15.3 15.3 0 0 0 4 10"></path>
+        </svg>
+        <div class="language-dropdown" *ngIf="showLanguageDropdown">
+          <a (click)="changeLanguage('pt')" [class.active]="(currentLang$ | async) === 'pt'">Português</a>
+          <a (click)="changeLanguage('en')" [class.active]="(currentLang$ | async) === 'en'">English</a>
+        </div>
+      </div>
+      <app-user-profile></app-user-profile>
+    </div>
+  </div>
 </header>

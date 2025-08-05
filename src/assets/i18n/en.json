@@ -1,0 +1,53 @@
+{
+  "HEADER": {
+    "HOME": "Home",
+    "PLANS": "Plans",
+    "ANALYSIS": "Analysis",
+    "COMMANDS": "Commands",
+    "CONTACT": "Contact"
+  },
+  "HOME": {
+    "TITLE": "Your Brawl Stars Analysis Bot",
+    "SUBTITLE": "Crow Tracker is a free and open source Brawl Stars tracker.",
+    "ADD_BOT_BUTTON": "Add the BOT"
+  },
+  "USER_PROFILE": {
+    "LOGGED_IN_AS": "Logged in as",
+    "LOGOUT": "Logout",
+    "LOGIN_BUTTON": "Login with Discord"
+  },
+  "FOOTER": {
+    "COLUMN_1_TITLE": "Crow Tracker",
+    "COLUMN_1_TEXT": "Statistics, strategy, and game sense. Play smarter, think better.",
+    "COLUMN_2_TITLE": "How It Works",
+    "COLUMN_2_TEXT": "Connect your account, track player data, build comps, and win with intelligence.",
+    "COLUMN_3_TITLE": "For Players",
+    "COLUMN_3_TEXT": "See the daily maps, analyze the meta, and dominate matchmaking. All in one place.",
+    "COPYRIGHT": "© 2025 Brawl Tracker · Made with ☕ by",
+    "LINK_ABOUT": "About",
+    "LINK_GITHUB": "GitHub",
+    "LINK_DISCORD": "Discord",
+    "LINK_HELP": "Help",
+    "LINK_PRIVACY": "Privacy"
+  },
+  "COMMANDS_PAGE": {
+    "TITLE": "Command List",
+    "SUBTITLE": "Discover all the features our bot offers for your e-sports analysis.",
+    "OPTIONS_HEADING": "Options:",
+    "REQUIRED": "Required",
+    "OPTIONAL": "Optional",
+
+    "REGISTER_TEAM": {
+      "NAME": "/register-team",
+      "DESCRIPTION": "Opens an interactive form to register a new team and its players in the analysis system. This is the first step to start collecting data."
+    },
+    "STATUS_TEAM": {
+      "NAME": "/status team",
+      "DESCRIPTION": "Provides a full analysis dashboard for a specific team, with subcommands for overview, brawler performance, and map performance.",
+      "OPTIONS": {
+        "TEAM_NAME": "The name of the registered team you want to analyze."
+      }
+    }
+  }
+}
+

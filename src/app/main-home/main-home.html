@@ -1,20 +1,19 @@
-<main class = "home-conatiner">
-  <section class = "home-section">
-    <div class = "box-main-info">
-      <div class = "imagem-logo">
-      <img src="assets/imgs/Futuristic_Robot_Analyst_with_Data-removebg-preview (1).png" alt="Logo">
+<main class="home-conatiner">
+  <section class="home-section">
+    <div class="box-main-info">
+      <div class="imagem-logo">
+        <img
+          [@fadeAnimation]
+          [src]="images[currentImageIndex]"
+          alt="Logo"
+          class="carousel-image"
+        />
       </div>
-      <div class = "box-main-info-text">
-      <h1>Your Brawl Stars Analysis Bot</h1>
-      <p>Brawl Tracker is a free and open source Brawl Stars tracker.</p>
-        <button class = "button-start">Adicione o BOT</button>
+      <div class="box-main-info-text">
+        <h1>{{ 'HOME.TITLE' | translate }}</h1>
+        <p>{{ 'HOME.SUBTITLE' | translate }}</p>
+        <button class="button-start">{{ 'HOME.ADD_BOT_BUTTON' | translate }}</button>
       </div>
     </div>
   </section>
-
-
-
-
-
-
 </main>
